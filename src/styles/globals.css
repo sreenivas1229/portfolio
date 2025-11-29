@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========== Premium Dark Base ========== */
+:root {
+  --bg: #0d0f15;
+  --card: #0f1720;
+  --muted: #94a3b8;
+  --accent-from: #6d28d9;
+  --accent-to: #0ea5e9;
+  --glass: rgba(255,255,255,0.03);
+  --glass-border: rgba(255,255,255,0.04);
+}
+
+html, body {
+  background: var(--bg);
+  color: #e6eef8;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+}
+
+/* Smooth transitions for theme interactions */
+* { transition: background-color 0.2s ease, color 0.18s ease, border-color 0.18s ease, transform 0.18s ease; }
+
+/* ========== Gradient Text ========== */
+.gradient-text {
+  background: linear-gradient(90deg, var(--accent-from), #4f46e5, var(--accent-to));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ========== Glass / Card ========== */
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  border: 1px solid var(--glass-border);
+}
+
+/* Neon border + subtle glow */
+.neon-border {
+  border: 1px solid rgba(99,102,241,0.14);
+  box-shadow: 0 6px 30px rgba(99,102,241,0.06);
+}
+
+/* Hover glow (use on interactive cards) */
+.card-glow:hover {
+  box-shadow: 0 18px 45px rgba(99,102,241,0.12), 0 0 30px rgba(14,165,233,0.06);
+  transform: translateY(-6px) scale(1.01);
+}
+
+/* Muted text */
+.muted { color: var(--muted) }
+
+/* ========== Neon Accent Buttons ========== */
+.btn-neon {
+  background: linear-gradient(90deg, rgba(99,102,241,0.14), rgba(14,165,233,0.08));
+  border: 1px solid rgba(99,102,241,0.18);
+  padding: .6rem 1rem;
+  border-radius: .6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+/* ========== 3D Floating animation ========= */
+@keyframes floaty {
+  0% { transform: translateY(0) rotateX(0deg); }
+  50% { transform: translateY(-10px) rotateX(2deg); }
+  100% { transform: translateY(0) rotateX(0deg); }
+}
+.floaty { animation: floaty 6s ease-in-out infinite }
+
+/* ========== Cursor ========== */
+.custom-cursor {
+  position: fixed;
+  pointer-events: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  border: 2px solid rgba(99,102,241,0.9);
+  box-shadow: 0 6px 18px rgba(99,102,241,0.1);
+  transition: transform 0.12s ease, background-color 0.12s ease, width 0.12s ease, height 0.12s ease, opacity 0.12s ease;
+  background: rgba(99,102,241,0.06);
+}
+
+/* cursor when hovering actionable elements */
+.cursor-active {
+  transform: translate(-50%, -50%) scale(1.9);
+  background: rgba(99,102,241,0.16);
+  width: 38px; height: 38px;
+}
+
+/* ========== Modal styles ========= */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(3,6,23,0.6);
+  display: grid;
+  place-items: center;
+  z-index: 60;
+}
+
+.modal-card {
+  width: min(920px, 95%);
+  max-height: 90vh;
+  overflow: auto;
+  border-radius: 14px;
+  padding: 1.25rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 30px 80px rgba(2,6,23,0.6);
+}
+
+/* image gallery inside modal */
+.modal-img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 10px;
+  background: #0b0e12;
+}
+
+/* small responsive adjustments */
+@media (max-width: 640px) {
+  .modal-img { height: 220px; }
+  .custom-cursor { display: none; }
+}
+
+/* section neon separators */
+.section-neon {
+  border-top: 1px solid rgba(14,165,233,0.06);
+  border-bottom: 1px solid rgba(99,102,241,0.03);
+}
+
+/* tiny helper for container widths */
+.container-max { max-width: 1120px; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
+.neon-glow:hover {
+  text-shadow: 0 0 8px rgba(99,102,241,0.9), 
+               0 0 16px rgba(59,130,246,0.7),
+               0 0 24px rgba(14,165,233,0.5);
+  transform: scale(1.02);
+}
+/* ========== Animated Gradient Text ========== */
+.animated-gradient {
+  background: linear-gradient(90deg, #6d28d9, #3b82f6, #0ea5e9, #6d28d9);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 6s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ========== Neon Glow on Hover ========== */
+/* .neon-hover:hover {
+  text-shadow: 0 0 10px rgba(99,102,241,0.9),
+               0 0 20px rgba(59,130,246,0.7),
+               0 0 30px rgba(14,165,233,0.6);
+  transform: scale(1.03);
+} */
